@@ -5,17 +5,20 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D playerRb;
+    private Vector2 pointerInput;
     private float horizontalInput;
     private float verticalInput;
     private const float playerSpeed = 10;
     private const float jumpForce = 14;
     private bool isGrounded = true;
     private int playerLayer, platformLayer;
+    private WeaponParent weaponParent;
 
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
+        weaponParent = GetComponentInChildren<WeaponParent>();
         playerLayer = LayerMask.NameToLayer("Player");
         platformLayer = LayerMask.NameToLayer("Platform");
     }
@@ -25,6 +28,8 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         Jump();
+        PointerInput();
+        weaponParent.pointerPosition = pointerInput; //Pivots the weapon around the player to look at mouse position
     }
 
     private void Move() // Controls the player's left - right movement
@@ -43,7 +48,6 @@ public class PlayerController : MonoBehaviour
         }
         else if (isGrounded && Input.GetKeyDown(KeyCode.Space) && verticalInput < 0)
         {
-            isGrounded = false;
             StartCoroutine("GoThroughPlatform");
         }
     }
@@ -62,5 +66,11 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = true;
         }
+    }
+
+    private void PointerInput() //Updates pointerInput to look at the mouse position
+    {
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        pointerInput= new Vector2(mousePos.x, mousePos.y);
     }
 }

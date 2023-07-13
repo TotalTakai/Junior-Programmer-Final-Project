@@ -24,6 +24,11 @@ Adding My Project Design Document - https://docs.google.com/document/d/1CBsrgPQF
 - Added Camera follow
 - Added logic for passthrough platform (in Unity and PlayerController's code)
 
+13/07 Update:
+Spent most of the day reading about abstracts and interfaces to make sure I make the game scaleable, so only a short update:
+- Added a weapon that pivots around the character pointing at the mouse position
+- fixed a bug that denied the player from jumping if he tried to down jump from the ground
+
 
 
 
