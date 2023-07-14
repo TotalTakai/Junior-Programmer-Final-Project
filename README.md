@@ -29,6 +29,12 @@ Spent most of the day reading about abstracts and interfaces to make sure I make
 - Added a weapon that pivots around the character pointing at the mouse position
 - fixed a bug that denied the player from jumping if he tried to down jump from the ground
 
+14/07 Update:
+Another small update, having been racking my brain about how to build the weapon system. Decided to have a weapon abstract with all the logic, with the specific
+weapons having the information for scalabilty matters. Right now decided on onAttack event which might change to become an abstract method. Right now learning
+about Raycasting for shooting the guns.
+- Added weapon abstract script for all weapons
+- Added Pistol script (derived from weapon abstract)
 
 
 
