@@ -1,32 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.Events;
 using UnityEngine;
 
 public abstract class WeaponAbstract : MonoBehaviour
 {
-    public UnityEvent onAttack;
+    [SerializeField] GameObject bulletPrefab;
     protected float attackCooldown { get; set; }
     protected bool isAutomatic { get; set; }
     protected float currentCooldown { get; set; }
 
+    private GameObject tmpBullet;
 
     // Update is called once per frame
     void Update()
     {
         if (isAutomatic)
         {
-            if (currentCooldown <= 0f)
+            if (Input.GetKeyDown(KeyCode.Mouse0) && currentCooldown <= 0f)
             {
-                onAttack?.Invoke();
-                currentCooldown = attackCooldown;
+                tmpBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+                tmpBullet.GetComponent<BulletAbstract>();
             }
         }
         else
         {
-            if (currentCooldown <= 0f)
+            if (Input.GetKey(KeyCode.Mouse0) && currentCooldown <= 0f)
             {
-                onAttack?.Invoke();
+                Instantiate(bulletPrefab);
+                Debug.Log("Bullet Spawned"); //debugging
                 currentCooldown = attackCooldown;
             }
         }

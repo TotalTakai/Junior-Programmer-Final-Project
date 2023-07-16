@@ -36,6 +36,11 @@ about Raycasting for shooting the guns.
 - Added weapon abstract script for all weapons
 - Added Pistol script (derived from weapon abstract)
 
+16/07 Update:
+-Implemented Enemy Weapon Auto-aim
+-Started working on BulletAbstract and PistolBullet scripts which holds the bullet behavoir (takes a lot longer then I thought). // I feel as if they are correct but can't test them without a proper Weapon Abstract
+- Editted the weapon abstract and maybe broken it a bit, will need to work on it again, might have to devide enemy from player, or find another way to fix the code
+
 
 
 

@@ -19,8 +19,8 @@ public class PlayerController : MonoBehaviour
     {
         playerRb = GetComponent<Rigidbody2D>();
         weaponParent = GetComponentInChildren<WeaponParent>();
-        playerLayer = LayerMask.NameToLayer("Player");
-        platformLayer = LayerMask.NameToLayer("Platform");
+        playerLayer = LayerMask.NameToLayer("Player"); //Needed for the jump down through platform
+        platformLayer = LayerMask.NameToLayer("Platform"); //Needed for the jump down through platform
     }
 
     // Update is called once per frame
